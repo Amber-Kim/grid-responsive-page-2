@@ -1,0 +1,268 @@
+/* css reset */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-main: lightgrey;
+  --color-light: red;
+}
+
+img {
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.container {
+  display: grid;
+  grid-gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+body {
+  background-color: #eee;
+  background-size: cover;
+  background-position: center center;
+  min-height: 100vh;
+  margin: 2rem;
+}
+
+/* header */
+.header {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-areas:
+    "hero hero cta1"
+    "hero hero cta2";
+}
+
+.header_hero {
+  grid-area: hero;
+  background-image: url("images/main.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  min-height: 400px;
+  padding: 2.5rem;
+  /* alinhar à esquerda e ao centro, com os elementos a ocupar apenas o espaço necessário e não os 100% bloco */
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+}
+
+.header_hero {
+  color: wheat;
+  text-shadow: 3px 3px 5px #c5af7ea4;
+}
+
+.header aside {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-main);
+  flex-direction: column;
+}
+
+.header_cta1 {
+  grid-area: cta1;
+}
+
+.header_cta2 {
+  grid-area: cta2;
+}
+
+.header_cta1 h2,
+.header_cta2 h2 {
+  font-size: 4rem;
+  font-weight: 100;
+}
+
+.header_cta1 p,
+.header_cta2 p {
+  font-size: 1.5rem;
+}
+
+/* menu */
+.menu_list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-gap: 10px;
+}
+
+.menu_list a {
+  text-transform: uppercase;
+  background-color: var(--color-main);
+  padding: 0.5rem;
+  color: #000;
+  display: block;
+  text-align: center;
+  font-weight: 600;
+}
+
+.menu_list a:hover {
+  background-color: var(--color-light);
+}
+
+/* artigos */
+.artigos {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.artigo {
+  background-color: #fff;
+  padding: 2rem 0.5rem;
+  text-align: center;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+.artigo p {
+  color: #666;
+  margin: 1rem 0;
+}
+
+.artigo_icon {
+  font-size: 3rem;
+}
+
+/* about (destaque do mês) > img + txt */
+.about {
+  display: grid;
+  padding: 1rem;
+  grid-template-columns: minmax(200px, 400px) 1fr;
+  background-color: #fff;
+  align-items: center;
+}
+
+.about_detail {
+  padding: 2rem;
+}
+
+.about_detail h3 {
+  color: grey;
+  font-size: 1.8rem;
+}
+
+.about_detail p {
+  font-size: 1.2rem;
+  margin: 2rem 0;
+}
+
+.about_detail strong {
+  color: red;
+}
+
+.about_detail a {
+  background-color: var(--color-main);
+  color: #fff;
+  padding: 0.5rem;
+  border-radius: 3px;
+}
+
+.about_detail a:hover {
+  background-color: var(--color-light);
+}
+
+.about_img {
+  border-radius: 50%;
+}
+
+/* social instagram */
+.social {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.social_title {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1fr 100px 1fr;
+  text-align: center;
+  align-items: center;
+}
+
+.social_title:before,
+.social_title:after {
+  content: "";
+  display: block;
+  height: 10px;
+  background: linear-gradient(var(--direction), var(--color-main), transparent);
+}
+
+.social_title:before {
+  --direction: -90deg;
+}
+
+.social_title:after {
+  --direction: 90deg;
+}
+
+.social img {
+  width: 100%;
+  height: 100%;
+}
+
+.toggle-container {
+  position: relative;
+}
+
+.toggle-btn {
+  background-color: var(--color-main);
+  padding: 5px 10px;
+  margin: 5px 0;
+  color: #fff;
+  display: none;
+}
+
+.toggle-checkbox {
+  position: absolute;
+  opacity: 0;
+}
+
+.toggle-checkbox:checked+.menu_list {
+  display: block;
+}
+
+/* @media > menu para topo em ecrãs sm */
+@media (max-width: 720px) {
+  .menu {
+    order: -1;
+  }
+
+  .toggle-btn {
+    display: block;
+  }
+
+  .menu_list {
+    display: none;
+  }
+
+  .header {
+    grid-template-areas: "hero""cta1""cta2";
+  }
+
+  .header_cta1,
+  .header_cta2 {
+    padding: 2rem 0;
+  }
+
+  .about {
+    display: grid;
+    padding: 2rem;
+    grid-template-columns: 1fr;
+  }
+}
